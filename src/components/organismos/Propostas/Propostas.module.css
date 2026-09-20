@@ -1,0 +1,122 @@
+.secao {
+  background: var(--preto);
+  padding-block: 96px 112px;
+}
+
+.cabecalho {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.titulo {
+  font-size: 64px;
+  line-height: 1.05;
+  letter-spacing: -0.05em;
+}
+
+.grade {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 28px;
+  min-height: 300px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--borda);
+  border-radius: var(--r-lg);
+  transition:
+    border-color var(--dur-media) var(--ease-padrao),
+    background var(--dur-media) var(--ease-padrao),
+    transform var(--dur-media) var(--ease-saida);
+}
+
+.card:hover {
+  background: rgba(255, 255, 255, 0.045);
+  border-color: rgba(255, 191, 39, 0.4);
+  transform: translateY(-4px);
+}
+
+.icone {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-md);
+  background: var(--amarelo);
+  color: var(--preto);
+  margin-bottom: 24px;
+}
+
+.cardTitulo {
+  font-size: 26px;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  margin-bottom: 14px;
+}
+
+.cardTexto {
+  font-size: 15px;
+  line-height: 1.55;
+  letter-spacing: -0.015em;
+  color: var(--cinza-claro);
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 1219px) {
+  .secao {
+    padding-block: 64px 72px;
+  }
+  .cabecalho {
+    margin-bottom: 48px;
+  }
+  .titulo {
+    font-size: 48px;
+    letter-spacing: -0.04em;
+  }
+  .grade {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .card {
+    min-height: 0;
+    padding: 24px;
+  }
+  .cardTitulo {
+    font-size: 22px;
+  }
+  .cardTexto {
+    font-size: 14px;
+  }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 809px) {
+  .secao {
+    padding-block: 56px 64px;
+  }
+  .cabecalho {
+    margin-bottom: 36px;
+    gap: 16px;
+  }
+  .titulo {
+    font-size: 34px;
+  }
+  .grade {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .card {
+    padding: 22px;
+  }
+  .icone {
+    margin-bottom: 18px;
+  }
+}

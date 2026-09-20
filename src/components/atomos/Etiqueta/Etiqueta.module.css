@@ -1,0 +1,21 @@
+.etiqueta {
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  padding-inline: 14px;
+  border-radius: var(--r-full);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.amarelo {
+  background: var(--amarelo);
+  color: var(--preto);
+}
+
+.escuro {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--branco);
+}

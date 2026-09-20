@@ -1,0 +1,130 @@
+.secao {
+  background: var(--preto);
+  padding-block: 96px 104px;
+}
+
+.grade {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 64px;
+  align-items: center;
+}
+
+.texto {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.titulo {
+  font-size: 56px;
+  line-height: 1.05;
+  letter-spacing: -0.05em;
+}
+
+.paragrafo {
+  font-size: 17px;
+  line-height: 1.6;
+  letter-spacing: -0.02em;
+  color: var(--cinza-claro);
+  max-width: 520px;
+}
+
+.cartao {
+  display: flex;
+  flex-direction: column;
+  padding: 28px;
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: var(--r-xl);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
+
+.cartaoTopo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.plataforma {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: #10cb70;
+}
+
+.cartaoTitulo {
+  font-size: 28px;
+  letter-spacing: -0.04em;
+  margin-bottom: 12px;
+}
+
+.cartaoTexto {
+  font-size: 15px;
+  line-height: 1.6;
+  letter-spacing: -0.015em;
+  color: var(--cinza-claro);
+  margin-bottom: 28px;
+}
+
+.cartaoBotao {
+  margin-top: auto;
+}
+
+.nota {
+  margin-top: 14px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #7a7a7a;
+  letter-spacing: -0.01em;
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 1219px) {
+  /* Texto em cima, card embaixo, tudo centralizado. */
+  .secao {
+    padding-block: 64px 72px;
+  }
+  .grade {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    justify-items: center;
+  }
+  .texto {
+    align-items: center;
+    text-align: center;
+    max-width: 560px;
+  }
+  .titulo {
+    font-size: 48px;
+    letter-spacing: -0.04em;
+  }
+  .paragrafo {
+    max-width: 560px;
+  }
+  .cartao {
+    width: 100%;
+    max-width: 390px;
+  }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 809px) {
+  .secao {
+    padding-block: 56px 64px;
+  }
+  .grade {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .titulo {
+    font-size: 34px;
+  }
+  .cartao {
+    padding: 22px;
+  }
+}

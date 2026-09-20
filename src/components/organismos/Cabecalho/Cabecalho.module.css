@@ -1,0 +1,137 @@
+.cabecalho {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: var(--preto);
+  transition: box-shadow var(--dur-media) var(--ease-padrao);
+}
+
+.solido {
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.07), 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.barra {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  height: var(--altura-header);
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-inline: var(--gutter);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.link {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--branco);
+  position: relative;
+  padding-block: 4px;
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--amarelo);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-media) var(--ease-saida);
+}
+
+.link:hover::after {
+  transform: scaleX(1);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  height: 40px;
+  padding-inline: 18px;
+  border-radius: var(--r-sm);
+  background: var(--amarelo);
+  color: var(--preto);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  transition:
+    background var(--dur-rapida) var(--ease-padrao),
+    transform var(--dur-rapida) var(--ease-padrao);
+}
+
+.cta:hover {
+  background: #ffcb4d;
+  transform: translateY(-1px);
+}
+
+.botaoMenu {
+  display: none;
+  color: var(--branco);
+  padding: 6px;
+}
+
+.menuMobile {
+  display: none;
+}
+
+@media (max-width: 1099px) {
+  .nav {
+    gap: 20px;
+  }
+  .link {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 899px) {
+  .nav,
+  .cta {
+    display: none;
+  }
+
+  .botaoMenu {
+    display: inline-flex;
+  }
+
+  .menuMobile {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px var(--gutter) 24px;
+    background: var(--preto);
+    border-top: 1px solid var(--borda);
+  }
+
+  .linkMobile {
+    padding: 14px 4px;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    border-bottom: 1px solid var(--borda);
+  }
+
+  .ctaMobile {
+    margin-top: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 52px;
+    border-radius: var(--r-sm);
+    background: var(--amarelo);
+    color: var(--preto);
+    font-size: 16px;
+    font-weight: 700;
+  }
+}

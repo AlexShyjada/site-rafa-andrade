@@ -1,0 +1,158 @@
+/* ============================================================
+   Casca compartilhada pelos dois formulários (grupos e material).
+   Um módulo só, importado pelos dois, para o cartão, a grade de
+   campos, o botão e a tela de sucesso não saírem de sincronia.
+   ============================================================ */
+
+.cartao {
+  width: 100%;
+  max-width: 460px;
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: 24px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-sizing: border-box;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
+
+.campos {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.linha {
+  display: grid;
+  gap: 12px;
+  align-items: start;
+}
+
+.linhaTelefone {
+  grid-template-columns: 142px 1fr;
+}
+
+.linhaNumero {
+  grid-template-columns: 108px 1fr;
+}
+
+.linhaCidade {
+  grid-template-columns: 1.25fr 1fr;
+}
+
+/* Bloco de endereço que aparece depois do CEP */
+.revelar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: revelarEntrada 220ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes revelarEntrada {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .revelar {
+    animation: none;
+  }
+}
+
+.enviar {
+  min-height: 52px;
+  background: var(--branco);
+  border: none;
+  border-radius: 14px;
+  color: var(--preto);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  margin-top: 6px;
+  transition:
+    opacity var(--dur-rapida) var(--ease-padrao),
+    background var(--dur-rapida) var(--ease-padrao),
+    transform 80ms ease;
+}
+
+.enviar:not(:disabled):hover {
+  background: var(--amarelo);
+}
+
+.enviar:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+}
+
+.enviar:not(:disabled):active {
+  transform: scale(0.99);
+}
+
+.erroEnvio {
+  color: #e5484d;
+  font-size: 12px;
+  text-align: center;
+  margin: 4px 0 0 0;
+  line-height: 1.4;
+}
+
+.consentimento {
+  color: #8e8e93;
+  font-size: 12px;
+  text-align: center;
+  margin: 4px 0 0 0;
+  line-height: 1.4;
+}
+
+/* ---------- Sucesso e convite ---------- */
+.sucesso {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sucessoTitulo {
+  color: var(--branco);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.03em;
+  margin: 0 0 8px 0;
+}
+
+.sucessoTexto {
+  color: var(--cinza-claro);
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+@media (max-width: 809px) {
+  .cartao {
+    padding: 20px;
+    border-radius: 18px;
+  }
+  .linha {
+    grid-template-columns: 1fr;
+  }
+  /* País e número são um campo só: nunca empilham. */
+  .linhaTelefone {
+    grid-template-columns: 124px 1fr;
+  }
+  .sucessoTitulo {
+    font-size: 24px;
+  }
+}

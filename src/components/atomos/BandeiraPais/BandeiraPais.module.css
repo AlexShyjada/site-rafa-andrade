@@ -1,0 +1,17 @@
+.bandeira {
+  width: 20px;
+  height: 14px;
+  border-radius: 3px;
+  object-fit: cover;
+  flex-shrink: 0;
+  display: block;
+}
+
+.reserva {
+  width: 20px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  color: var(--cinza-claro);
+  flex-shrink: 0;
+}

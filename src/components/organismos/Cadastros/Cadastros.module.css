@@ -1,0 +1,94 @@
+.duplo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.metade {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 96px 40px;
+  background: rgba(255, 255, 255, 0.02);
+  isolation: isolate;
+}
+
+.comFoto {
+  background: var(--preto);
+}
+
+.foto {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(1) contrast(1.05);
+  opacity: 0.32;
+}
+
+.veu {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(20, 20, 20, 0.5) 0%, rgba(20, 20, 20, 0.86) 100%);
+}
+
+.conteudo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+}
+
+.titulo {
+  font-size: 44px;
+  line-height: 1.08;
+  letter-spacing: -0.05em;
+}
+
+.caixaForm {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+/* ---------- Tablet (810–1219px) ----------
+   As duas metades continuam lado a lado, como no original. */
+@media (max-width: 1219px) {
+  .metade {
+    padding: 64px 24px;
+  }
+  .conteudo {
+    max-width: 100%;
+  }
+  .titulo {
+    font-size: 48px;
+    letter-spacing: -0.04em;
+  }
+  .caixaForm {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .titulo {
+    font-size: 38px;
+  }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 809px) {
+  .duplo {
+    grid-template-columns: 1fr;
+  }
+  .metade {
+    padding: 56px var(--gutter);
+  }
+  .titulo {
+    font-size: 30px;
+  }
+}

@@ -1,0 +1,195 @@
+/* ============================================================
+   Design tokens — Rafa Andrade 14014
+   ============================================================ */
+:root {
+  /* cores */
+  --amarelo: #ffbf27;
+  --amarelo-escuro: #e5a916;
+  --preto: #141414;
+  --preto-puro: #000000;
+  --branco: #ffffff;
+  --cinza-texto: #4d4d4d;
+  --cinza-claro: #b3b3b3;
+  --superficie: #1c1c1c;
+  --superficie-2: #232323;
+  --borda: rgba(255, 255, 255, 0.08);
+  --borda-forte: rgba(255, 255, 255, 0.16);
+
+  /* tipografia */
+  --fonte: var(--font-geist-sans), "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  /* escala de espaçamento (base 4) */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 20px;
+  --s-6: 24px;
+  --s-8: 32px;
+  --s-10: 40px;
+  --s-12: 48px;
+  --s-16: 64px;
+  --s-20: 80px;
+  --s-24: 96px;
+  --s-30: 120px;
+
+  /* raios */
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 24px;
+  --r-full: 999px;
+
+  /* layout */
+  --largura-max: 1200px;
+  --gutter: 40px;
+  --altura-header: 78px;
+
+  /* movimento */
+  --ease-saida: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-padrao: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-rapida: 160ms;
+  --dur-media: 320ms;
+  --dur-lenta: 640ms;
+}
+
+/* Tablet */
+@media (max-width: 1219px) {
+  :root {
+    --gutter: 40px;
+    --altura-header: 72px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 809px) {
+  :root {
+    --gutter: 20px;
+    --altura-header: 64px;
+  }
+}
+
+/* ============================================================
+   Reset
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--altura-header) + 16px);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--preto);
+  color: var(--branco);
+  font-family: var(--fonte);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+figure {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--amarelo);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: var(--amarelo);
+  color: var(--preto);
+}
+
+/* ============================================================
+   Utilitários de layout
+   ============================================================ */
+.container {
+  width: 100%;
+  max-width: var(--largura-max);
+  margin: 0 auto;
+  padding-inline: var(--gutter);
+}
+
+.destaque {
+  color: var(--amarelo);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,147 @@
+.campo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.gatilho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  min-height: 52px;
+  padding: 0 16px;
+  background: var(--superficie-2);
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+  color: var(--branco);
+  font-size: 15px;
+  text-align: left;
+  cursor: pointer;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color var(--dur-rapida) var(--ease-padrao);
+}
+
+.gatilho:hover:not(:disabled) {
+  border-color: var(--borda-forte);
+}
+
+.gatilho:focus-visible,
+.gatilho[aria-expanded='true'] {
+  border-color: var(--amarelo);
+}
+
+.gatilho:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+}
+
+.comErro {
+  border-color: #e5484d;
+}
+
+.valor {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
+  color: var(--branco);
+}
+
+.valor span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.placeholder {
+  color: #8e8e93;
+}
+
+/* Gatilho compacto do seletor de país */
+.compacto {
+  padding: 0 8px 0 12px;
+}
+
+/* No gatilho compacto nada pode ser cortado: sigla e DDI são a informação. */
+.compacto .valor,
+.compacto .valor span {
+  overflow: visible;
+  text-overflow: clip;
+  white-space: nowrap;
+}
+
+.compacto .valor {
+  gap: 6px;
+}
+
+/* ---------- lista (portal no body) ---------- */
+.lista {
+  background: #1f1f1f;
+  border: 1px solid #2e2e2e;
+  border-radius: 14px;
+  z-index: 2147483000;
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+  font-family: var(--fonte);
+}
+
+.busca {
+  width: 100%;
+  height: 44px;
+  background: #171717;
+  border: none;
+  border-bottom: 1px solid #2e2e2e;
+  color: var(--branco);
+  font-size: 14px;
+  padding: 0 14px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.busca::placeholder {
+  color: #8e8e93;
+}
+
+.opcoes {
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.opcao {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 14px;
+  color: var(--branco);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.opcao:hover {
+  background: #2a2a2a;
+}
+
+.ativa {
+  background: #2a2a2a;
+}
+
+.vazia {
+  color: #8e8e93;
+  cursor: default;
+}
+
+.vazia:hover {
+  background: transparent;
+}
+
+.erro {
+  color: #e5484d;
+  font-size: 12px;
+  padding-left: 4px;
+  line-height: 1.35;
+}

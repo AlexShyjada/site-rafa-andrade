@@ -1,0 +1,88 @@
+.convite {
+  background: var(--branco);
+  border-radius: 18px;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.avatar {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  margin-bottom: 16px;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.avatarVazio {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.nome {
+  color: #111b21;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.35;
+  margin: 0 0 4px 0;
+  overflow-wrap: anywhere;
+}
+
+.legenda {
+  color: #667781;
+  font-size: 13px;
+  line-height: 1.4;
+  margin: 0 0 20px 0;
+}
+
+.botao {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 280px;
+  min-height: 48px;
+  padding: 0 24px;
+  border-radius: 999px;
+  background: #25d366;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  box-sizing: border-box;
+  transition:
+    transform 80ms ease,
+    opacity var(--dur-rapida) var(--ease-padrao);
+}
+
+.botao:active {
+  transform: scale(0.99);
+}
+
+.botaoInativo {
+  background: rgba(0, 0, 0, 0.06);
+  color: #667781;
+  font-weight: 500;
+  cursor: not-allowed;
+}
+
+.contagem {
+  color: #667781;
+  font-size: 12px;
+  line-height: 1.4;
+  margin: 14px 0 0 0;
+}

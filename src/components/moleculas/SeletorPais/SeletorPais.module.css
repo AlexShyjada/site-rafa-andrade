@@ -1,0 +1,17 @@
+.gatilho {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.iso {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  color: var(--branco);
+}
+
+.ddi {
+  font-size: 15px;
+  color: #8e8e93;
+}

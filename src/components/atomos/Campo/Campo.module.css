@@ -1,0 +1,51 @@
+.campo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.input {
+  width: 100%;
+  min-height: 52px;
+  background: var(--superficie-2);
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+  color: var(--branco);
+  font-size: 15px;
+  padding: 0 16px;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color var(--dur-rapida) var(--ease-padrao);
+}
+
+.input::placeholder {
+  color: #8e8e93;
+}
+
+.input:hover {
+  border-color: var(--borda-forte);
+}
+
+.input:focus {
+  border-color: var(--amarelo);
+}
+
+.comErro {
+  border-color: #e5484d;
+}
+
+.erro {
+  color: #e5484d;
+  font-size: 12px;
+  padding-left: 4px;
+  line-height: 1.35;
+}
+
+.dica {
+  color: #8e8e93;
+  font-size: 12px;
+  padding-left: 4px;
+  line-height: 1.35;
+}

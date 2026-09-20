@@ -1,0 +1,48 @@
+.rodape {
+  background: var(--preto);
+  padding-block: 16px;
+}
+
+.linha {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-inline: 24px;
+  min-height: 60px;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex: 1;
+}
+
+.link {
+  font-size: 16px;
+  letter-spacing: -0.02em;
+  color: #808080;
+  transition: color var(--dur-rapida) var(--ease-padrao);
+}
+
+.link:hover {
+  color: var(--branco);
+}
+
+@media (max-width: 809px) {
+  .linha {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    padding-inline: var(--gutter);
+  }
+  .links {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 14px;
+  }
+}

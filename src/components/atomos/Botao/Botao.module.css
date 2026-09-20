@@ -1,0 +1,75 @@
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 56px;
+  padding-inline: 24px;
+  border-radius: var(--r-sm);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+  transition:
+    transform var(--dur-rapida) var(--ease-padrao),
+    background var(--dur-rapida) var(--ease-padrao),
+    box-shadow var(--dur-rapida) var(--ease-padrao);
+}
+
+.botao:hover {
+  transform: translateY(-2px);
+}
+
+.botao:active {
+  transform: translateY(0);
+}
+
+.icone {
+  display: inline-flex;
+  transition: transform var(--dur-media) var(--ease-saida);
+}
+
+.botao:hover .icone {
+  transform: translateX(4px);
+}
+
+.escuro {
+  background: var(--preto);
+  color: var(--branco);
+}
+
+.escuro:hover {
+  background: #262626;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+}
+
+.amarelo {
+  background: var(--amarelo);
+  color: var(--preto);
+}
+
+.amarelo:hover {
+  background: #ffcb4d;
+  box-shadow: 0 10px 24px rgba(255, 191, 39, 0.28);
+}
+
+.claro {
+  background: var(--branco);
+  color: var(--preto);
+}
+
+.claro:hover {
+  background: #f2f2f2;
+}
+
+.largo {
+  width: 100%;
+}
+
+@media (max-width: 809px) {
+  .botao {
+    height: 52px;
+    font-size: 17px;
+    padding-inline: 20px;
+  }
+}
