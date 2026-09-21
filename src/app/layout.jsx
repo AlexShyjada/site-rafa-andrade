@@ -1,16 +1,27 @@
+import { headers } from 'next/headers';
 import { GeistSans } from 'geist/font/sans';
 import { site } from '@/dados/site';
 import '@/styles/globais.css';
 
-// Endereço público do site, usado para montar a URL absoluta da imagem de
-// preview (og:image). Na Vercel vem do próprio build; em outro serviço,
-// defina NEXT_PUBLIC_SITE_URL (veja .env.example). A imagem em si é local:
-// public/imagens/og.png.
-const enderecoDoSite =
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  (process.env.VERCEL_PROJECT_PRODUCTION_URL
-    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-    : undefined);
+// O og:image precisa ser uma URL absoluta, mas a imagem em si é local
+// (public/imagens/og.png). O endereço vem do domínio pelo qual o site foi
+// acessado na requisição (Host / X-Forwarded-*), então funciona em qualquer
+// hospedagem sem configurar nada. Se quiser fixar, defina
+// NEXT_PUBLIC_SITE_URL (veja .env.example).
+function enderecoDoSite() {
+  if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL;
+
+  const cabecalhos = headers();
+  const primeiro = (valor) => valor?.split(',')[0].trim();
+  const host =
+    primeiro(cabecalhos.get('x-forwarded-host')) || cabecalhos.get('host');
+  if (!host) return undefined;
+
+  const local = /^(localhost|127\.0\.0\.1|\[::1\])(:|$)/.test(host);
+  const protocolo =
+    primeiro(cabecalhos.get('x-forwarded-proto')) || (local ? 'http' : 'https');
+  return `${protocolo}://${host}`;
+}
 
 // Imagem que aparece ao compartilhar o link (Facebook, Instagram Direct, X,
 // WhatsApp...). O ?v= força as redes a buscarem de novo se a imagem mudar.
@@ -22,10 +33,9 @@ const previa = {
   alt: site.titulo
 };
 
-export const metadata = {
+const metadados = {
   title: site.titulo,
   description: site.descricao,
-  metadataBase: enderecoDoSite ? new URL(enderecoDoSite) : undefined,
   openGraph: {
     title: site.titulo,
     description: site.descricao,
@@ -60,6 +70,14 @@ export const metadata = {
     'msapplication-TileImage': '/mstile-150x150.png'
   }
 };
+
+export function generateMetadata() {
+  const endereco = enderecoDoSite();
+  return {
+    ...metadados,
+    metadataBase: endereco ? new URL(endereco) : undefined
+  };
+}
 
 export const viewport = {
   themeColor: '#141414',
