@@ -14,12 +14,11 @@ npm run dev      # http://localhost:3000
 npm run build
 npm start         # serve the production build
 npm run lint      # next lint — see caveat below
-npm run assets    # one-time: download the hero photo into /public/imagens
 ```
 
 There is no test suite in this repo. `npm run lint` is effectively unconfigured: there is no ESLint config or `eslint` dependency, so `next lint` will prompt to set one up interactively rather than lint anything.
 
-`npm run assets` is optional: until the images exist locally under `/public/imagens`, the site falls back to the Framer CDN, so it never renders broken either way. The Hero portrait uses `ImagemComFallback` (`src/components/atomos/ImagemComFallback/ImagemComFallback.jsx`, a plain `<img>` with an `onError` swap to the `fallback` URL); the "grupos" section background layers the local and remote URLs in a CSS `background-image` (`imagemFundo` over `imagemFundoRemota`). Both pairs are defined in `src/dados/site.js`. The download list lives in `scripts/baixar-assets.mjs` (only the hero portrait and the grupos background). The share-preview image (`public/imagens/og.png`) and the favicon set (`icon.svg`, `favicon.ico`, `favicon-{16,32,48}x{16,32,48}.png`, `apple-touch-icon.png`, `android-chrome-*.png` incl. a maskable one, `mstile-150x150.png`) are committed by hand in `public/` and wired up in the `metadata` export of `src/app/layout.jsx`; the PWA manifest is `src/app/manifest.js`. The master artwork is `public/imagens/icone.svg` (489×512); `public/icon.svg` is the same drawing with a square viewBox, and every PNG/ICO was rasterized from it (transparent for browser tabs, white background for iOS/Android/Windows tiles).
+All images live in `public/imagens` and are committed (hero portrait `hero.png`, grupos background `grupos-fundo.png`, share preview `og.png` at 1200×600, logos/SVGs). The Hero portrait goes through `ImagemComFallback` (a plain `<img>` with an optional `onError` swap to a `fallback` URL, currently unused). The favicon set (`icon.svg`, `favicon.ico`, `favicon-{16,32,48}x{16,32,48}.png`, `apple-touch-icon.png`, `android-chrome-*.png` incl. a maskable one, `mstile-150x150.png`) is wired up in the `metadata` export of `src/app/layout.jsx`, as are the Open Graph/Twitter preview tags (absolute image URL built from `NEXT_PUBLIC_SITE_URL`, else Vercel's production URL, else `site.url`); the PWA manifest is `src/app/manifest.js`. The master artwork is `public/imagens/icone.svg` (489×512); `public/icon.svg` is the same drawing with a square viewBox, and every PNG/ICO was rasterized from it (transparent for browser tabs, white background for iOS/Android/Windows tiles).
 
 Remote images used through `next/image` (e.g. country flags from `flagcdn.com`, Framer assets) must have their host allowlisted in `images.remotePatterns` in `next.config.mjs`.
 
@@ -28,8 +27,8 @@ Remote images used through `next/image` (e.g. country flags from `flagcdn.com`, 
 **Content is centralized, not scattered.** All copy, links, and webhook URLs live in `src/dados/site.js` (plus `src/dados/paises.js` for the phone country-code list and `src/dados/estados.js` for Brazilian states). Section components import from here and render — they don't hardcode strings. To change campaign text, a link, or a number, edit `src/dados/site.js`; there is rarely a reason to touch a component for a content change.
 
 **Components under `src/components/` follow an atomic-design-inspired hierarchy** (folder names in Portuguese, matching the rest of the codebase):
-- `atomos/` — self-contained primitives with no dependency on other components: Botao, Campo, Etiqueta, Icones (inline SVGs), ImagemComFallback, Logo, Revelar, BandeiraPais (flagcdn SVG, falls back to the ISO code), BandeiraEstado, MarcaParceiro.
-- `moleculas/` — combine atoms: Seletor (a hand-built accessible listbox — the native `<select>` can't be styled to match the design), SeletorPais (Seletor specialized with the country/DDI list and flag icons), ConviteWhatsApp (post-submit group-invite card).
+- `atomos/` — self-contained primitives with no dependency on other components: Botao, Campo, Etiqueta, Icones (inline SVGs; the 8 proposal-card icons are Phosphor "regular" paths on a 256 viewBox, the rest are hand-drawn 24px line icons, no icon package is installed), ImagemComFallback, Logo, Revelar, BandeiraPais (flagcdn SVG, falls back to the ISO code), BandeiraEstado, MarcaParceiro.
+- `moleculas/` — combine atoms: Seletor (a hand-built accessible listbox — the native `<select>` can't be styled to match the design), SeletorPais (Seletor specialized with the country/DDI list and flag icons), ConviteWhatsApp (post-submit group-invite card), Carrossel (a `<ul>` that stays a normal grid above 809px and becomes a scroll-snap carousel with arrows and a dots pill on mobile, mirroring the Framer Slideshow; used by `Propostas`, its `<li>` children must be direct children of the list, and per-item `Revelar` animation is disabled inside it on mobile).
 - `organismos/` — page-section-level blocks composed of molecules/atoms: Cabecalho, Hero, Ticker, Propostas, Cadastros, Doacao, Rodape (one per section, assembled in order by `src/app/page.jsx`). `Cadastros` is a two-column section holding both lead-capture forms side by side: `FormularioGrupos` (WhatsApp groups signup: nome, telefone, estado, cidade) and `FormularioMaterial` (campaign-material request: adds email + CEP/address). They live here rather than in molecules because they own real business logic — validation, webhook submission, ViaCEP/IBGE lookups.
 
 **Each component lives in its own folder** alongside its CSS: `src/components/<camada>/Nome/Nome.jsx` + `Nome.module.css` (CSS Modules, not global classes; components with no styles, like `Icones`, `Revelar`, `ImagemComFallback`, have only the `.jsx`). There are no `index.js` barrels, so imports repeat the name. Import convention: within the same layer, imports are relative (`../Icones/Icones`); crossing layers, imports use the alias `@/components/<camada>/Nome/Nome`. Both forms share one stylesheet, `src/styles/formulario.module.css` (card, fields, success state); `FormularioMaterial/FormularioMaterial.module.css` is currently orphaned — nothing imports it.
@@ -48,9 +47,11 @@ Remote images used through `next/image` (e.g. country flags from `flagcdn.com`, 
 
 At tablet the layout is not just a narrower desktop; it changes shape, matching the original:
 - **Hero** stacks and centers — portrait (490×687) on top via `order: -1`, then centered title (64px), paragraph and buttons in a row.
-- **Propostas** goes to 3 columns (not 2), section titles drop to 48px.
+- **Propostas** goes to 3 columns (not 2), section titles drop to 48px. At mobile the cards become a carousel (see `Carrossel`).
 - **Doacao** stacks — centered text above, 390px card below.
-- **Botao** keeps its full desktop size (56px tall, 20px type); it only shrinks at mobile.
+- **Botao** keeps its full desktop size (56px tall, 20px type); it only shrinks at mobile. The Hero buttons (`.botoes > .botao` in `Hero.module.css`) are extra compact at mobile — 40px tall, 14px type, side by side — matching the Framer site.
+- The Hero has an 8px yellow `border-top` right under the fixed header (the hero uses `margin-top: var(--altura-header)` instead of top padding so the border isn't hidden behind the header).
+- Section `h2` sizes are shared: `Propostas` and `Cadastros` titles both use 64px desktop / 48px tablet / 34px mobile.
 
 **Animation conventions:**
 - `Revelar` (`src/components/atomos/Revelar/Revelar.jsx`) is the shared scroll-reveal wrapper (fade + rise, once per element, staggerable via `atraso`) — reach for it instead of writing bespoke `whileInView` logic in a section.

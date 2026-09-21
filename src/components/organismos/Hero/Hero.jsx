@@ -48,7 +48,12 @@ export default function Hero() {
             custom={2}
           >
             {hero.botoes.map((b) => (
-              <Botao key={b.href} href={b.href} variante={b.variante}>
+              <Botao
+                key={b.href}
+                href={b.href}
+                variante={b.variante}
+                className={estilos.botao}
+              >
                 {b.rotulo}
               </Botao>
             ))}
@@ -64,7 +69,6 @@ export default function Hero() {
           <ImagemComFallback
             className={estilos.retrato}
             src={hero.imagem}
-            fallback={hero.imagemRemota}
             alt="Rafa Andrade, candidato a deputado estadual pela Bahia"
             width={490}
             height={687}

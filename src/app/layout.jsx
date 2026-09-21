@@ -2,29 +2,42 @@ import { GeistSans } from 'geist/font/sans';
 import { site } from '@/dados/site';
 import '@/styles/globais.css';
 
+// Endereço público do site, usado para montar a URL absoluta da imagem de
+// preview (og:image). Em produção na Vercel vem do próprio build; em outro
+// serviço, defina NEXT_PUBLIC_SITE_URL.
+const enderecoDoSite =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : site.url);
+
+// Imagem que aparece ao compartilhar o link (Facebook, Instagram Direct, X,
+// WhatsApp...). O ?v= força as redes a buscarem de novo se a imagem mudar.
+const previa = {
+  url: '/imagens/og.png?v=2',
+  width: 1200,
+  height: 600,
+  type: 'image/png',
+  alt: site.titulo
+};
+
 export const metadata = {
   title: site.titulo,
   description: site.descricao,
-  metadataBase: new URL(site.url),
+  metadataBase: new URL(enderecoDoSite),
   openGraph: {
     title: site.titulo,
     description: site.descricao,
+    siteName: site.nome,
     type: 'website',
     locale: 'pt_BR',
-    images: [
-      {
-        url: '/imagens/og.png',
-        width: 490,
-        height: 686,
-        alt: site.titulo
-      }
-    ]
+    images: [previa]
   },
   twitter: {
     card: 'summary_large_image',
     title: site.titulo,
     description: site.descricao,
-    images: ['/imagens/og.png']
+    images: [{ url: previa.url, alt: previa.alt }]
   },
   // O manifesto (Android/PWA) é gerado por src/app/manifest.js
   icons: {

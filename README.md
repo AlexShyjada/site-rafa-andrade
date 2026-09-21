@@ -9,13 +9,10 @@ e editável.
 
 ```bash
 npm install
-npm run assets   # baixa a foto original do hero para /public/imagens
 npm run dev      # http://localhost:3000
 ```
 
-`npm run assets` é opcional: enquanto as imagens não estiverem em
-`/public/imagens`, o site carrega as originais direto do CDN do Framer.
-Depois de baixar, ele passa a usar os arquivos locais sozinho.
+Todas as imagens ficam versionadas em `/public/imagens`.
 
 ## Estrutura
 

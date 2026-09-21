@@ -23,7 +23,7 @@ export default function Botao({
       <span className={estilos.rotulo}>{children}</span>
       {icone && (
         <span className={estilos.icone}>
-          <Icone nome={icone} tamanho={18} />
+          <Icone nome={icone} tamanho={20} />
         </span>
       )}
     </>

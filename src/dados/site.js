@@ -35,9 +35,7 @@ export const hero = {
     { rotulo: 'Conhecer propostas', href: '#propostas', variante: 'escuro' },
     { rotulo: 'Quero apoiar', href: '#faca-uma-doacao', variante: 'amarelo' }
   ],
-  imagem: '/imagens/rafa-retrato.png',
-  imagemRemota:
-    'https://framerusercontent.com/images/KFkkC2u5DspQRrWAwbESPkTVY.png'
+  imagem: '/imagens/hero.png'
 };
 
 export const ticker = ['Candidato a Deputado Estadual', '14014', 'Por uma Bahia Gloriosa!'];
@@ -53,19 +51,19 @@ export const propostas = {
         'Transparência radical em contratos públicos, fiscalização permanente e punição rigorosa para desvios de recursos.'
     },
     {
-      icone: 'escudo',
+      icone: 'escudoMais',
       titulo: 'Segurança Pública',
       texto:
         'Apoio incondicional às forças policiais, endurecimento contra o crime organizado e proteção ao cidadão de bem.'
     },
     {
-      icone: 'imposto',
+      icone: 'graficoQueda',
       titulo: 'Redução de Impostos',
       texto:
         'Simplificação tributária para empresas e famílias, com revisão de tributos que sufocam o trabalhador baiano.'
     },
     {
-      icone: 'raio',
+      icone: 'documento',
       titulo: 'Desburocratização',
       texto:
         'Menos burocracia, mais agilidade. Estado eficiente que serve à sociedade, e não o contrário.'
@@ -100,9 +98,7 @@ export const propostas = {
 export const grupos = {
   etiqueta: 'Renan Santos + Rafa Andrade',
   titulo: ['Participe dos', 'Nossos', 'Grupos'],
-  imagemFundo: '/imagens/multidao.png',
-  imagemFundoRemota:
-    'https://framerusercontent.com/images/qgrHVM5nv4mEuHoxwcrxKVcSQ0.png',
+  imagemFundo: '/imagens/grupos-fundo.png',
   botao: 'ASSINAR',
   aviso: 'Ao participar, você concorda em receber comunicações e atualizações.',
   // Webhook do Apps Script "Webhook Framer - grupos Renan + Rafa"

@@ -1,6 +1,7 @@
 import Etiqueta from '@/components/atomos/Etiqueta/Etiqueta';
 import Icone from '@/components/atomos/Icones/Icones';
 import Revelar from '@/components/atomos/Revelar/Revelar';
+import Carrossel from '@/components/moleculas/Carrossel/Carrossel';
 import { propostas } from '@/dados/site';
 import estilos from './Propostas.module.css';
 
@@ -20,7 +21,7 @@ export default function Propostas() {
           </Revelar>
         </header>
 
-        <ul className={estilos.grade}>
+        <Carrossel className={estilos.grade} rotulo={propostas.etiqueta}>
           {propostas.itens.map((item, i) => (
             <Revelar
               como="li"
@@ -29,13 +30,13 @@ export default function Propostas() {
               className={estilos.card}
             >
               <span className={estilos.icone}>
-                <Icone nome={item.icone} tamanho={22} />
+                <Icone nome={item.icone} tamanho={28} />
               </span>
               <h3 className={estilos.cardTitulo}>{item.titulo}</h3>
               <p className={estilos.cardTexto}>{item.texto}</p>
             </Revelar>
           ))}
-        </ul>
+        </Carrossel>
       </div>
     </section>
   );

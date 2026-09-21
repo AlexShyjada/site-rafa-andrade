@@ -13,13 +13,8 @@ export default function Cadastros() {
         <div
           className={estilos.foto}
           aria-hidden="true"
-          style={{
-            // o arquivo local fica por cima; enquanto não foi baixado,
-            // o navegador mostra a camada remota que vem atrás
-            backgroundImage: `url(${grupos.imagemFundo}), url(${grupos.imagemFundoRemota})`
-          }}
+          style={{ backgroundImage: `url(${grupos.imagemFundo})` }}
         />
-        <div className={estilos.veu} aria-hidden="true" />
 
         <div className={estilos.conteudo}>
           <Revelar como="div">

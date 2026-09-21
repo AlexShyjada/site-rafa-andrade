@@ -3,8 +3,7 @@ Arquivos já versionados aqui:
   rafa-andrade-rodape.svg   wordmark, versão cinza do rodapé
   quero-apoiar.svg          marca da plataforma de doação
   oculos-ticker.svg         ícone que separa as frases do ticker
-  rafa-retrato.png          foto do hero
-
-Falta só a foto de fundo da seção "Nossos grupos" (multidao.png).
-Rode "npm run assets" na raiz para baixá-la. Enquanto isso, a seção carrega a foto direto do
-Framer, então nada aparece quebrado.
+  hero.png                  foto do hero
+  grupos-fundo.png          fundo da seção "Nossos grupos"
+  og.png                    preview ao compartilhar o link (1200x600)
+  icone.svg                 logo (mapa + óculos) usado nos favicons

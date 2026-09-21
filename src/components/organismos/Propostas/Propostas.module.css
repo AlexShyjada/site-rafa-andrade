@@ -47,8 +47,8 @@
 .icone {
   display: grid;
   place-items: center;
-  width: 44px;
-  height: 44px;
+  width: 56px;
+  height: 56px;
   border-radius: var(--r-md);
   background: var(--amarelo);
   color: var(--preto);
@@ -109,12 +109,15 @@
   .titulo {
     font-size: 34px;
   }
-  .grade {
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
+  /* a grade vira carrossel (ver Carrossel.module.css); o card reserva
+     espaço embaixo para os pontos */
   .card {
-    padding: 22px;
+    min-height: 344px;
+    padding: 24px 24px 56px;
+  }
+  .cardTexto {
+    font-size: 18px;
+    line-height: 1.4;
   }
   .icone {
     margin-bottom: 18px;

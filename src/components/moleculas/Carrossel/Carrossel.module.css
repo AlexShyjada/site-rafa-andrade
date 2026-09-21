@@ -1,0 +1,117 @@
+.raiz {
+  position: relative;
+}
+
+/* offsetLeft dos itens é medido a partir do trilho */
+.trilho {
+  position: relative;
+}
+
+/* setas e pontos só existem no mobile */
+.controles {
+  display: none;
+}
+
+@media (max-width: 809px) {
+  /* seletor duplo: vence a grade (className) das telas maiores */
+  .raiz .trilho {
+    display: flex;
+    gap: 12px;
+    align-items: stretch;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    /* o próximo item aparece esmaecendo na borda direita */
+    -webkit-mask-image: linear-gradient(to right, #000 0%, #000 87.5%, transparent 100%);
+    mask-image: linear-gradient(to right, #000 0%, #000 87.5%, transparent 100%);
+  }
+  .raiz .trilho::-webkit-scrollbar {
+    display: none;
+  }
+  /* no último item não há mais nada para esmaecer */
+  .raiz .trilho[data-fim] {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  /* um item por vez, com o começo do próximo à mostra. Sem o "revelar" por
+     item: fora da tela na horizontal ele só dispararia ao deslizar. */
+  .raiz .trilho > * {
+    flex: 0 0 calc(100% - 24px);
+    scroll-snap-align: start;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .controles {
+    display: block;
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .seta {
+    position: absolute;
+    top: 50%;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    margin-top: -20px;
+    padding: 0;
+    border: 0;
+    border-radius: 40px;
+    background: rgba(0, 0, 0, 0.2);
+    color: var(--branco);
+    cursor: pointer;
+    pointer-events: auto;
+    transition: opacity var(--dur-rapida) var(--ease-padrao);
+  }
+  .seta:disabled {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .anterior {
+    left: 20px;
+  }
+  .proxima {
+    right: 20px;
+  }
+
+  .pontos {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    display: flex;
+    transform: translateX(-50%);
+    padding-inline: 5px;
+    border-radius: 50px;
+    background: rgba(0, 0, 0, 0.2);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    pointer-events: auto;
+  }
+  .ponto {
+    display: grid;
+    place-items: center;
+    width: 20px;
+    height: 30px;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+  }
+  .ponto::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transition: background var(--dur-rapida) var(--ease-padrao);
+  }
+  .ponto[aria-current='true']::after {
+    background: var(--amarelo);
+  }
+}
