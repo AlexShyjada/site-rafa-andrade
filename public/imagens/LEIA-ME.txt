@@ -6,6 +6,5 @@ Arquivos já versionados aqui:
   rafa-retrato.png          foto do hero
 
 Falta só a foto de fundo da seção "Nossos grupos" (multidao.png).
-Rode "npm run assets" na raiz para baixá-la, junto com a imagem de
-og e os favicons. Enquanto isso, a seção carrega a foto direto do
+Rode "npm run assets" na raiz para baixá-la. Enquanto isso, a seção carrega a foto direto do
 Framer, então nada aparece quebrado.

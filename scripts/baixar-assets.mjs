@@ -16,18 +16,6 @@ const arquivos = [
   {
     url: 'https://framerusercontent.com/images/qgrHVM5nv4mEuHoxwcrxKVcSQ0.png',
     destino: 'public/imagens/multidao.png'
-  },
-  {
-    url: 'https://framerusercontent.com/images/FSmOCCh2sTucAsHxRFUAaBz0juA.png',
-    destino: 'public/imagens/og.png'
-  },
-  {
-    url: 'https://framerusercontent.com/images/xQPTlyypFCAyMd3XYHeUH3yaBA.png',
-    destino: 'public/apple-touch-icon.png'
-  },
-  {
-    url: 'https://framerusercontent.com/images/Ehq51qwlgHpHmgFlDKZUS8GljOQ.png',
-    destino: 'public/favicon.png'
   }
 ];
 

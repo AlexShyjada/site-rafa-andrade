@@ -10,9 +10,29 @@ export const metadata = {
     title: site.titulo,
     description: site.descricao,
     type: 'website',
-    locale: 'pt_BR'
+    locale: 'pt_BR',
+    images: [
+      {
+        url: '/imagens/og.png',
+        width: 490,
+        height: 686,
+        alt: site.titulo
+      }
+    ]
   },
-  icons: { icon: '/favicon.svg' }
+  twitter: {
+    card: 'summary_large_image',
+    title: site.titulo,
+    description: site.descricao,
+    images: ['/imagens/og.png']
+  },
+  icons: {
+    icon: [{ url: '/favicon.png', type: 'image/png' }],
+    apple: '/apple-touch-icon.png'
+  },
+  other: {
+    'facebook-domain-verification': '9l48en2klmk1s8f4il2wpefmq2dccq'
+  }
 };
 
 export const viewport = {
