@@ -3,13 +3,15 @@
   padding-block: 16px;
 }
 
+/* logo à esquerda, links no meio, botão de voltar ao topo à direita */
 .linha {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 40px;
-  max-width: 1400px;
+  max-width: calc(1280px + 2 * var(--gutter));
   margin: 0 auto;
-  padding-inline: 24px;
+  padding-inline: var(--gutter);
   min-height: 60px;
 }
 
@@ -18,7 +20,6 @@
   align-items: center;
   justify-content: center;
   gap: 24px;
-  flex: 1;
 }
 
 .link {
@@ -32,17 +33,26 @@
   color: var(--branco);
 }
 
+.topo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--r-sm);
+  background: var(--amarelo);
+  color: var(--preto);
+  transition: background var(--dur-rapida) var(--ease-padrao);
+}
+
+.topo:hover {
+  background: var(--amarelo-escuro);
+}
+
 @media (max-width: 809px) {
-  .linha {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 24px;
-    padding-inline: var(--gutter);
-  }
+  /* no celular ficam só a logo e o botão de voltar ao topo */
   .links {
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 14px;
+    display: none;
   }
 }

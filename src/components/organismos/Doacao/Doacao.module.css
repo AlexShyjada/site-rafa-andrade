@@ -5,9 +5,10 @@
 
 .grade {
   display: grid;
-  grid-template-columns: 1fr 420px;
+  grid-template-columns: 1fr 400px;
   gap: 64px;
-  align-items: center;
+  align-items: start;
+  max-width: calc(1280px + 2 * var(--gutter));
 }
 
 .texto {
@@ -24,20 +25,20 @@
 }
 
 .paragrafo {
-  font-size: 17px;
+  font-size: 20px;
   line-height: 1.6;
   letter-spacing: -0.02em;
   color: var(--cinza-claro);
-  max-width: 520px;
+  max-width: 760px;
 }
 
 .cartao {
   display: flex;
   flex-direction: column;
-  padding: 28px;
-  background: var(--superficie);
-  border: 1px solid var(--borda);
-  border-radius: var(--r-xl);
+  min-height: 498px;
+  padding: 30px;
+  background: var(--branco);
+  border-radius: var(--r-lg);
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
 }
 
@@ -58,16 +59,17 @@
 }
 
 .cartaoTitulo {
-  font-size: 28px;
+  font-size: 30px;
   letter-spacing: -0.04em;
+  color: var(--preto);
   margin-bottom: 12px;
 }
 
 .cartaoTexto {
-  font-size: 15px;
-  line-height: 1.6;
+  font-size: 17px;
+  line-height: 1.5;
   letter-spacing: -0.015em;
-  color: var(--cinza-claro);
+  color: var(--cinza-texto);
   margin-bottom: 28px;
 }
 
@@ -109,6 +111,10 @@
   .cartao {
     width: 100%;
     max-width: 390px;
+    min-height: 0;
+  }
+  .grade {
+    align-items: center;
   }
 }
 
@@ -123,6 +129,9 @@
   }
   .titulo {
     font-size: 34px;
+  }
+  .paragrafo {
+    font-size: 17px;
   }
   .cartao {
     padding: 22px;

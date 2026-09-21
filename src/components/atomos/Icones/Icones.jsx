@@ -62,6 +62,7 @@ const caminhos = {
   setaDiagonal: <path d="M7 17 17 7m0 0h-7m7 0v7" />,
   setaCima: <path d="M12 19V5m-6 6 6-6 6 6" />,
   chevron: <path d="m6 9 6 6 6-6" />,
+  chevronCima: <path d="m6 15 6-6 6 6" />,
   whatsapp: (
     <>
       <path d="M4 20l1.2-3.6A7.5 7.5 0 1 1 8 19.2z" />

@@ -62,7 +62,7 @@ export const propostas = {
       icone: 'imposto',
       titulo: 'Redução de Impostos',
       texto:
-        'Simplificação tributária para empresas e famílias, com revisão de tributos que sufocam o trabalhador paulista.'
+        'Simplificação tributária para empresas e famílias, com revisão de tributos que sufocam o trabalhador baiano.'
     },
     {
       icone: 'raio',
@@ -159,7 +159,7 @@ export const doacao = {
     titulo: 'Vaquinha eleitoral',
     texto:
       'A plataforma oficial aceita cartão de crédito, boleto e Pix, emite o recibo eleitoral na hora e já entrega tudo pronto para a prestação de contas.',
-    botao: 'Doar na vaquina',
+    botao: 'Doar na vaquinha',
     link: 'https://queroapoiar.com.br/rafandrade',
     nota:
       'Pessoa física pode doar até 10% dos rendimentos brutos declarados no ano anterior, como manda a Lei Eleitoral.'
