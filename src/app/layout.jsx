@@ -3,13 +3,14 @@ import { site } from '@/dados/site';
 import '@/styles/globais.css';
 
 // Endereço público do site, usado para montar a URL absoluta da imagem de
-// preview (og:image). Em produção na Vercel vem do próprio build; em outro
-// serviço, defina NEXT_PUBLIC_SITE_URL.
+// preview (og:image). Na Vercel vem do próprio build; em outro serviço,
+// defina NEXT_PUBLIC_SITE_URL (veja .env.example). A imagem em si é local:
+// public/imagens/og.png.
 const enderecoDoSite =
   process.env.NEXT_PUBLIC_SITE_URL ||
   (process.env.VERCEL_PROJECT_PRODUCTION_URL
     ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-    : site.url);
+    : undefined);
 
 // Imagem que aparece ao compartilhar o link (Facebook, Instagram Direct, X,
 // WhatsApp...). O ?v= força as redes a buscarem de novo se a imagem mudar.
@@ -24,7 +25,7 @@ const previa = {
 export const metadata = {
   title: site.titulo,
   description: site.descricao,
-  metadataBase: new URL(enderecoDoSite),
+  metadataBase: enderecoDoSite ? new URL(enderecoDoSite) : undefined,
   openGraph: {
     title: site.titulo,
     description: site.descricao,

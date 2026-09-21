@@ -14,8 +14,7 @@ export const site = {
   logoRodape: '/imagens/rafa-andrade-rodape.svg',
   titulo: 'Rafa Andrade 14014 · Deputado Estadual na Bahia',
   descricao:
-    'Sou da nova geração que é preparada para combater privilégios, fortalecer a segurança pública, defender a liberdade econômica e representar quem realmente trabalha.',
-  url: 'https://rafandrade.framer.website'
+    'Sou da nova geração que é preparada para combater privilégios, fortalecer a segurança pública, defender a liberdade econômica e representar quem realmente trabalha.'
 };
 
 export const navegacao = [

@@ -5,7 +5,7 @@ import { bandeira } from '@/dados/paises';
 import estilos from './BandeiraPais.module.css';
 
 /**
- * Bandeira do país como SVG do flagcdn, não como emoji: o Windows não
+ * Bandeira do país como SVG local (public/bandeiras), não como emoji: o Windows não
  * desenha emoji de bandeira e mostra as duas letras do país no lugar.
  * Se a imagem falhar, cai para a sigla.
  */

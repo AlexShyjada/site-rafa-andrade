@@ -23,7 +23,7 @@ src/
     page.jsx            ordem das seções
   components/
     atomos/             Botao, Campo, Etiqueta, Icones,
-                        ImagemComFallback, Logo, Revelar
+                        Logo, Revelar
     moleculas/          Seletor, SeletorPais
     organismos/         Cabecalho, Hero, Ticker, Propostas, Cadastros,
                         Doacao, Rodape, FormularioMaterial

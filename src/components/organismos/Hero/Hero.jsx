@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import Botao from '@/components/atomos/Botao/Botao';
-import ImagemComFallback from '@/components/atomos/ImagemComFallback/ImagemComFallback';
 import { hero } from '@/dados/site';
 import estilos from './Hero.module.css';
 
@@ -66,7 +65,8 @@ export default function Hero() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         >
-          <ImagemComFallback
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             className={estilos.retrato}
             src={hero.imagem}
             alt="Rafa Andrade, candidato a deputado estadual pela Bahia"

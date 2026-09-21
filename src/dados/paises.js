@@ -1,6 +1,6 @@
 // Países e códigos de discagem (DDI), em ordem alfabética pt-BR.
-// A bandeira vem como SVG do flagcdn, não como emoji: o Windows não desenha
-// emoji de bandeira e mostra as duas letras do país no lugar.
+// A bandeira vem como SVG local (public/bandeiras), não como emoji: o Windows
+// não desenha emoji de bandeira e mostra as duas letras do país no lugar.
 export const paises = [
   { iso: 'AF', nome: 'Afeganistão', ddi: '93' },
   { iso: 'ZA', nome: 'África do Sul', ddi: '27' },
@@ -256,4 +256,4 @@ export const paisPadrao = paises.find((p) => p.iso === PAIS_PADRAO);
 export const acharPais = (iso) =>
   paises.find((p) => p.iso === iso) ?? paisPadrao;
 
-export const bandeira = (iso) => `https://flagcdn.com/${iso.toLowerCase()}.svg`;
+export const bandeira = (iso) => `/bandeiras/${iso.toLowerCase()}.svg`;
