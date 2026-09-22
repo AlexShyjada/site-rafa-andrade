@@ -171,3 +171,8 @@ export const rodape = {
   copyright:
     '© 2026 Eleição Rafael de Andrade Freire Brito – Deputado Estadual · 68.455.295/0001-24'
 };
+
+export const cookies = {
+  texto: 'Este site utiliza cookies. Ao continuar navegando, você concorda com o uso deles.',
+  botao: 'Ok'
+};
