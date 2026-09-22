@@ -12,7 +12,7 @@ export const site = {
   // wordmark oficial: versão clara no cabeçalho, versão cinza no rodapé
   logo: '/imagens/rafa-andrade.svg',
   logoRodape: '/imagens/rafa-andrade-rodape.svg',
-  titulo: 'Rafa Andrade 14014 · Deputado Estadual na Bahia',
+  titulo: 'Rafa Andrade 14014 · Candidato a Deputado Estadual na Bahia',
   descricao:
     'Sou da nova geração que é preparada para combater privilégios, fortalecer a segurança pública, defender a liberdade econômica e representar quem realmente trabalha.'
 };

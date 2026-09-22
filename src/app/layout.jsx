@@ -3,13 +3,14 @@ import { GeistSans } from 'geist/font/sans';
 import { site } from '@/dados/site';
 import '@/styles/globais.css';
 
-// O og:image precisa ser uma URL absoluta, mas a imagem em si é local
-// (public/imagens/og.png). O endereço vem do domínio pelo qual o site foi
-// acessado na requisição (Host / X-Forwarded-*), então funciona em qualquer
-// hospedagem sem configurar nada. Se quiser fixar, defina
-// NEXT_PUBLIC_SITE_URL (veja .env.example).
 function enderecoDoSite() {
-  if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL;
+  const configurado = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  if (configurado) {
+    return (/^https?:\/\//i.test(configurado)
+      ? configurado
+      : `https://${configurado}`
+    ).replace(/\/+$/, '');
+  }
 
   const cabecalhos = headers();
   const primeiro = (valor) => valor?.split(',')[0].trim();
@@ -23,10 +24,20 @@ function enderecoDoSite() {
   return `${protocolo}://${host}`;
 }
 
+// URL inválida nunca pode derrubar o site: sem base, o Next usa o padrão dele.
+function baseDoSite() {
+  try {
+    const endereco = enderecoDoSite();
+    return endereco ? new URL(endereco) : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
 // Imagem que aparece ao compartilhar o link (Facebook, Instagram Direct, X,
 // WhatsApp...). O ?v= força as redes a buscarem de novo se a imagem mudar.
 const previa = {
-  url: '/imagens/og.png?v=2',
+  url: '/imagens/og.png',
   width: 1200,
   height: 600,
   type: 'image/png',
@@ -48,7 +59,7 @@ const metadados = {
     card: 'summary_large_image',
     title: site.titulo,
     description: site.descricao,
-    images: [{ url: previa.url, alt: previa.alt }]
+    images: [/imagens/og.png]
   },
   // O manifesto (Android/PWA) é gerado por src/app/manifest.js
   icons: {
@@ -72,11 +83,7 @@ const metadados = {
 };
 
 export function generateMetadata() {
-  const endereco = enderecoDoSite();
-  return {
-    ...metadados,
-    metadataBase: endereco ? new URL(endereco) : undefined
-  };
+  return { ...metadados, metadataBase: baseDoSite() };
 }
 
 export const viewport = {
