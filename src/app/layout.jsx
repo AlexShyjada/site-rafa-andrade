@@ -59,7 +59,7 @@ const metadados = {
     card: 'summary_large_image',
     title: site.titulo,
     description: site.descricao,
-    images: [/imagens/og.png]
+    images: ['/imagens/og.png']
   },
   // O manifesto (Android/PWA) é gerado por src/app/manifest.js
   icons: {
