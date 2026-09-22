@@ -1,6 +1,17 @@
 .rodape {
+  border-top: 1px solid #2b2b2b;
+  width: 100%;
   background: var(--preto);
-  padding-block: 16px;
+}
+
+.footerContainer{
+  width: 100%;
+  max-width: calc(1280px + 2 * var(--gutter));
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
 }
 
 /* logo à esquerda, links no meio, botão de voltar ao topo à direita */
@@ -9,10 +20,10 @@
   align-items: center;
   justify-content: space-between;
   gap: 40px;
-  max-width: calc(1280px + 2 * var(--gutter));
   margin: 0 auto;
   padding-inline: var(--gutter);
   min-height: 60px;
+  padding: 16px 0 16px 0;
 }
 
 .links {
@@ -48,6 +59,14 @@
 
 .topo:hover {
   background: var(--amarelo-escuro);
+}
+
+.copyright {
+  margin: 0 auto;
+  padding: 16px;
+  font-size: 13px;
+  text-align: center;
+  color: #808080;
 }
 
 @media (max-width: 809px) {

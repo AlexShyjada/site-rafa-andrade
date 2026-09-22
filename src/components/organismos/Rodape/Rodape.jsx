@@ -7,20 +7,28 @@ export default function Rodape() {
   return (
     <footer className={estilos.rodape}>
       <div className={estilos.linha}>
-        <Logo tamanho="sm" variante="rodape" />
+        <div className={estilos.footerContainer}>
+          <Logo tamanho="sm" variante="rodape" />
 
-        <nav className={estilos.links} aria-label="Rodapé">
-          {rodape.links.map((l) => (
-            <a key={l.rotulo} className={estilos.link} href={l.href}>
-              {l.rotulo}
-            </a>
-          ))}
-        </nav>
+          <nav className={estilos.links} aria-label="Rodapé">
+            {rodape.links.map((l) => (
+              <a key={l.rotulo} className={estilos.link} href={l.href}>
+                {l.rotulo}
+              </a>
+            ))}
+          </nav>
 
-        <a className={estilos.topo} href="#inicio" aria-label="Voltar ao topo">
-          <Icone nome="chevronCima" tamanho={20} />
-        </a>
+          <a className={estilos.topo} href="#inicio" aria-label="Voltar ao topo">
+            <Icone nome="chevronCima" tamanho={20} />
+          </a>
+        </div>
       </div>
+
+      <p className={estilos.copyright}>
+        <span className={estilos.footerContainer}>
+          {rodape.copyright}
+        </span>
+      </p>
     </footer>
   );
 }
