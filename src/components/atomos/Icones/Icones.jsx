@@ -38,6 +38,12 @@ const caminhos = {
     </>
   ),
   check: <path d="m5 13 4.2 4.2L19 7.5" />,
+  localizacao: (
+    <>
+      <path d="M12 21s-7-5.3-7-11a7 7 0 1 1 14 0c0 5.7-7 11-7 11Z" />
+      <circle cx="12" cy="10" r="2.5" />
+    </>
+  ),
   menu: <path d="M4 7h16M4 12h16M4 17h16" />,
   fechar: <path d="m6 6 12 12M18 6 6 18" />
 };

@@ -24,7 +24,13 @@ export default function Rodape() {
         </div>
       </div>
 
-      <p className={estilos.copyright}>{rodape.copyright}</p>
+      <div className={estilos.infoRodape}>
+        <p className={estilos.endereco}>
+          <Icone nome="localizacao" tamanho={16} />
+          {rodape.endereco}
+        </p>
+        <p className={estilos.copyright}>{rodape.copyright}</p>
+      </div>
     </footer>
   );
 }

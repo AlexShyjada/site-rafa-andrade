@@ -167,6 +167,7 @@ export const rodape = {
     { rotulo: 'Nossos grupos', href: '#grupos-whatsapp' },
     { rotulo: 'Material de campanha', href: '#material-de-campanha' }
   ],
+  endereco: 'Praça Rockfeller, 84 – Apto 301, Barris, Salvador – BA, 40070-170',
   copyright:
     '© 2026 Eleição Rafael de Andrade Freire Brito – Deputado Estadual · 68.455.295/0001-24'
 };
