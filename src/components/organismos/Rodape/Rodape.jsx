@@ -24,11 +24,7 @@ export default function Rodape() {
         </div>
       </div>
 
-      <p className={estilos.copyright}>
-        <span className={estilos.footerContainer}>
-          {rodape.copyright}
-        </span>
-      </p>
+      <p className={estilos.copyright}>{rodape.copyright}</p>
     </footer>
   );
 }
