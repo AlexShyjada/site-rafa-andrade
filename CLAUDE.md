@@ -59,3 +59,7 @@ At tablet the layout is not just a narrower desktop; it changes shape, matching 
 **Path alias:** `@/*` maps to `src/*` (see `jsconfig.json`).
 
 **The README is partly stale — trust the code over it.** Known drifts: it says Geist loads via `next/font/google` (it's the `geist` package), and it lists flat component paths like `atomos/Logo.jsx` / `./Icones` (real paths are `atomos/Logo/Logo.jsx` / `../Icones/Icones`).
+
+## Propostas: cards + leitor em modal
+
+Cada card de `Propostas` (dados em `propostas.itens`, `src/dados/site.js`) tem o botão "Ver propostas", que abre `organismos/LeitorPropostas`: modal estilo e-book (sumário, zoom por botões/pinça/ctrl+roda/teclado, teclado, deslize, estados de carregamento e erro, link para baixar). Ele desenha o PDF original, sem alteração e em vetor, num canvas com **pdf.js**, redesenhando nítido a cada zoom. Os PDFs ficam em `public/propostas/<livro>.pdf`; o pdf.js (build `legacy`, pdfjs-dist 6.2.108, licença Apache-2.0) é servido de `public/pdfjs/` e importado dinamicamente com `webpackIgnore`, ou seja, não é dependência do npm nem entra no bundle. Para trocar um PDF, substitua o arquivo e atualize `paginas` e `indice` (proposta → página inicial) do item em `site.js`.
